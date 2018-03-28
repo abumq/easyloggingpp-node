@@ -71,8 +71,8 @@ const Logger = function(id) {
         }
 
         if (Array.isArray(conf)) {
-            conf.forEach(c => (item) => {
-                this.configure(item);
+            conf.forEach((c) => {
+                this.configure(c);
             })
         }
     };
@@ -96,8 +96,8 @@ const configureAllLoggers = (conf) => {
     }
 
     if (Array.isArray(conf)) {
-        conf.forEach(c => (item) => {
-            configureAllLoggers(item);
+        conf.forEach((c) => {
+            configureAllLoggers(c);
         })
     }
 };
