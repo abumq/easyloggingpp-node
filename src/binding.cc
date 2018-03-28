@@ -101,7 +101,7 @@ NAN_METHOD(ConfigureAllFromFile)
     std::string file(*fileParam);
 
     el::Configurations conf(file);
-    el::Loggers::reconfigureAllLoggers(conf);
+    el::Loggers::setDefaultConfigurations(conf, true);
 }
 
 NAN_METHOD(ConfigureAllValue)
