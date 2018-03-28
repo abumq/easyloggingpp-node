@@ -23,6 +23,8 @@ using Nan::GetFunction;
 using Nan::New;
 using Nan::Set;
 
+INITIALIZE_EASYLOGGINGPP
+
 NAN_METHOD(Version)
 {
     info.GetReturnValue().Set(String::NewFromUtf8(Isolate::GetCurrent(), el::VersionInfo::version().c_str()));
