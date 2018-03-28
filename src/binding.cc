@@ -88,7 +88,7 @@ NAN_METHOD(ConfigureAllValue)
 
 NAN_METHOD(ConfigureAllValueByLevel)
 {
-    String::Utf8Value levelTypeParam(info[1]->ToString());
+    String::Utf8Value levelTypeParam(info[0]->ToString());
     std::string levelType(*levelTypeParam);
 
     String::Utf8Value configTypeParam(info[1]->ToString());

@@ -8,7 +8,7 @@
       ],
       "defines": [
         "ELPP_FEATURE_CRASH_LOG",
-        "ELPP_NO_DEFAULT_LOG_FILE"
+        "ELPP_DEFAULT_LOG_FILE=\"/dev/null\""
       ],
       "xcode_settings": {
         "OTHER_CFLAGS": [

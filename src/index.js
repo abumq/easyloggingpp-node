@@ -60,7 +60,7 @@ const Logger = function(id) {
 
     this.configure = (conf) => {
         if (typeof conf !== 'object') {
-            throw new Error('Configuration must be object');
+            throw new Error(`Invalid [${typeof conf} type. Configuration must be object`);
         }
         if (conf.config_file) {
             easyloggingpp.configure_from_file(this.id, conf.config_file);
@@ -69,12 +69,18 @@ const Logger = function(id) {
         if (conf.config && conf.value) {
             easyloggingpp.configure(this.id, conf.config, conf.value);
         }
+
+        if (Array.isArray(conf)) {
+            conf.forEach(c => (item) => {
+                this.configure(item);
+            })
+        }
     };
 };
 
 const configureAllLoggers = (conf) => {
     if (typeof conf !== 'object') {
-        throw new Error('Configuration must be object');
+        throw new Error(`Invalid [${typeof conf} type. Configuration must be object`);
     }
     if (conf.config_file) {
         easyloggingpp.configure_all_loggers_from_file(conf.config_file);
@@ -87,6 +93,12 @@ const configureAllLoggers = (conf) => {
     if (conf.config && conf.value) {
         easyloggingpp.configure_all_loggers(conf.config, conf.value);
         return;
+    }
+
+    if (Array.isArray(conf)) {
+        conf.forEach(c => (item) => {
+            configureAllLoggers(item);
+        })
     }
 };
 
