@@ -29,8 +29,10 @@ logger.info('obj %s', person);
 logger.info('null %s', null);
 
 logger.info('undefined %s', undefined);
+```
 
-// other levels
+## Log
+```
 logger.warn(...);
 logger.error(...);
 logger.debug(...);
