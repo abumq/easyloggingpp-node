@@ -3,8 +3,8 @@
     {
       "target_name": "easyloggingpp",
       "sources": [
-        "src/binding.cc"
-        "include/easylogging++.cc"
+        "src/binding.cc",
+        "deps/easylogging++.cc"
       ],
       "xcode_settings": {
         "OTHER_CFLAGS": [
@@ -15,7 +15,7 @@
       },
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "include"
+        "deps/"
       ],
     },
   ],

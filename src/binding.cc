@@ -35,8 +35,8 @@ NAN_METHOD(ConfigureFromFile)
     String::Utf8Value fileParam(info[1]->ToString());
     std::string file(*fileParam);
 
-    el::Configuration conf(file);
-    el::Logger logger = el::Loggers::getLogger(loggerId, true);
+    el::Configurations conf(file);
+    el::Logger* logger = el::Loggers::getLogger(loggerId, true);
     el::Loggers::reconfigureLogger(logger, conf);
 }
 
