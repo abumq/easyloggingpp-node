@@ -79,3 +79,21 @@ exports.ConfigurationType = {
     MaxLogFileSize: 128,
     LogFlushThreshold: 256,
 };
+
+exports.LoggingFlag = {
+    NewLineForContainer: 1,
+    AllowVerboseIfModuleNotSpecified: 2,
+    LogDetailedCrashReason: 4,
+    DisableApplicationAbortOnFatalLog: 8,
+    ImmediateFlush: 16,
+    StrictLogFileSizeCheck: 32,
+    ColoredTerminalOutput: 64,
+    MultiLoggerSupport: 128,
+    DisablePerformanceTrackingCheckpointComparison: 256,
+    DisableVModules: 512,
+    DisableVModulesExtensions: 1024,
+    HierarchicalLogging: 2048,
+    CreateLoggerAutomatically: 4096,
+    AutoSpacing: 8192,
+    FixedTimeFormat: 16384
+}

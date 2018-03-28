@@ -30,6 +30,36 @@ NAN_METHOD(Version)
     info.GetReturnValue().Set(String::NewFromUtf8(Isolate::GetCurrent(), el::VersionInfo::version().c_str()));
 }
 
+NAN_METHOD(AddFlag)
+{
+
+    String::Utf8Value flagParam(info[0]->ToString());
+    std::string flag(*flagParam);
+    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
+
+    el::Loggers::addFlag(loggingFlag);
+}
+
+NAN_METHOD(RemoveFlag)
+{
+    String::Utf8Value flagParam(info[0]->ToString());
+    std::string flag(*flagParam);
+    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
+
+    el::Loggers::removeFlag(loggingFlag);
+}
+
+NAN_METHOD(HasFlag)
+{
+    String::Utf8Value flagParam(info[0]->ToString());
+    std::string flag(*flagParam);
+    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
+
+    bool has = el::Loggers::hasFlag(loggingFlag);
+
+    info.GetReturnValue().Set(has ? Nan::True() : Nan::False());
+}
+
 NAN_METHOD(RegisterLogger)
 {
     String::Utf8Value loggerIdParam(info[0]->ToString());
@@ -135,6 +165,9 @@ NAN_METHOD(WriteLog) {
 
 NAN_MODULE_INIT(InitAll)
 {
+    el::Loggers::addFlag(el::LoggingFlag::DisableApplicationAbortOnFatalLog);
+    el::Loggers::addFlag(el::LoggingFlag::ColoredTerminalOutput);
+
     #define DEFINE_FN(name, callback) Set(target, New<String>(#name).ToLocalChecked(), \
         GetFunction(New<FunctionTemplate>(callback)).ToLocalChecked())
 
@@ -146,6 +179,9 @@ NAN_MODULE_INIT(InitAll)
     DEFINE_FN(configure_all_loggers_by_level, ConfigureAllValueByLevel);
     DEFINE_FN(write_log, WriteLog);
     DEFINE_FN(register_logger, RegisterLogger);
+    DEFINE_FN(add_flag, AddFlag);
+    DEFINE_FN(remove_flag, RemoveFlag);
+    DEFINE_FN(has_flag, HasFlag);
     #undef DEFINE_FN
 }
 

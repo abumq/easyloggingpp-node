@@ -102,8 +102,12 @@ const configureAllLoggers = (conf) => {
     }
 };
 
+exports.addFlag = easyloggingpp.add_flag;
+exports.removeFlag = easyloggingpp.remove_flag;
+exports.hasFlag = easyloggingpp.has_flag;
 exports.version = easyloggingpp.version;
 exports.getLogger = (id) => (new Logger(id));
 exports.configureAllLoggers = configureAllLoggers;
 exports.Level = CommonUtils.LoggingLevels;
 exports.ConfigType = CommonUtils.ConfigurationType;
+exports.LoggingFlag = CommonUtils.LoggingFlag;
