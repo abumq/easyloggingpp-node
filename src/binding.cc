@@ -30,6 +30,13 @@ NAN_METHOD(Version)
     info.GetReturnValue().Set(String::NewFromUtf8(Isolate::GetCurrent(), el::VersionInfo::version().c_str()));
 }
 
+NAN_METHOD(RegisterLogger)
+{
+    String::Utf8Value loggerIdParam(info[0]->ToString());
+    std::string loggerId(*loggerIdParam);
+    el::Loggers::getLogger(loggerId, true);
+}
+
 NAN_METHOD(ConfigureFromFile)
 {
     String::Utf8Value loggerIdParam(info[0]->ToString());
@@ -40,6 +47,59 @@ NAN_METHOD(ConfigureFromFile)
     el::Configurations conf(file);
     el::Logger* logger = el::Loggers::getLogger(loggerId, true);
     el::Loggers::reconfigureLogger(logger, conf);
+}
+
+NAN_METHOD(ConfigureValue)
+{
+    String::Utf8Value loggerIdParam(info[0]->ToString());
+    std::string loggerId(*loggerIdParam);
+
+    String::Utf8Value configTypeParam(info[1]->ToString());
+    std::string configType(*configTypeParam);
+
+    String::Utf8Value valueParam(info[2]->ToString());
+    std::string value(*valueParam);
+
+    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
+    el::Logger* logger = el::Loggers::getLogger(loggerId, true);
+    el::Loggers::reconfigureLogger(logger->id(), config, value);
+}
+
+NAN_METHOD(ConfigureAllFromFile)
+{
+    String::Utf8Value fileParam(info[0]->ToString());
+    std::string file(*fileParam);
+
+    el::Configurations conf(file);
+    el::Loggers::reconfigureAllLoggers(conf);
+}
+
+NAN_METHOD(ConfigureAllValue)
+{
+    String::Utf8Value configTypeParam(info[0]->ToString());
+    std::string configType(*configTypeParam);
+
+    String::Utf8Value valueParam(info[1]->ToString());
+    std::string value(*valueParam);
+
+    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
+    el::Loggers::reconfigureAllLoggers(config, value);
+}
+
+NAN_METHOD(ConfigureAllValueByLevel)
+{
+    String::Utf8Value levelTypeParam(info[1]->ToString());
+    std::string levelType(*levelTypeParam);
+
+    String::Utf8Value configTypeParam(info[1]->ToString());
+    std::string configType(*configTypeParam);
+
+    String::Utf8Value valueParam(info[2]->ToString());
+    std::string value(*valueParam);
+
+    el::Level level(static_cast<el::Level>(stoi(levelType)));
+    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
+    el::Loggers::reconfigureAllLoggers(level, config, value);
 }
 
 NAN_METHOD(WriteLog) {
@@ -80,7 +140,12 @@ NAN_MODULE_INIT(InitAll)
 
     DEFINE_FN(version, Version);
     DEFINE_FN(configure_from_file, ConfigureFromFile);
+    DEFINE_FN(configure, ConfigureValue);
+    DEFINE_FN(configure_all_loggers_from_file, ConfigureAllFromFile);
+    DEFINE_FN(configure_all_loggers, ConfigureAllValue);
+    DEFINE_FN(configure_all_loggers_by_level, ConfigureAllValueByLevel);
     DEFINE_FN(write_log, WriteLog);
+    DEFINE_FN(register_logger, RegisterLogger);
     #undef DEFINE_FN
 }
 

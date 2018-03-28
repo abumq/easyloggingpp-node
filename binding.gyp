@@ -6,6 +6,10 @@
         "src/binding.cc",
         "deps/easylogging++.cc"
       ],
+      "defines": [
+        "ELPP_FEATURE_CRASH_LOG",
+        "ELPP_NO_DEFAULT_LOG_FILE"
+      ],
       "xcode_settings": {
         "OTHER_CFLAGS": [
           "-fexceptions",

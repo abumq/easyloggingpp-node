@@ -56,13 +56,26 @@ exports.confJson = (jsonOrFilename) => {
     return false;
 }
 
-// Various logging levels accepted by the server
 exports.LoggingLevels = {
-  Trace: 2,
-  Debug: 4,
-  Fatal: 8,
-  Error: 16,
-  Warning: 32,
-  Verbose: 64,
-  Info: 128
+    Trace: 1,
+    Trace: 2,
+    Debug: 4,
+    Fatal: 8,
+    Error: 16,
+    Warning: 32,
+    Verbose: 64,
+    Info: 128
+};
+
+exports.ConfigurationType = {
+    Enabled: 1,
+    ToFile: 2,
+    ToStandardOutput: 4,
+    Format: 8,
+    Filename: 16,
+    SubsecondPrecision: 32,
+    MillisecondsWidth: 32,
+    PerformanceTracking: 64,
+    MaxLogFileSize: 128,
+    LogFlushThreshold: 256,
 };
