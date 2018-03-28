@@ -1,0 +1,30 @@
+{
+  "name": "easyloggingpp",
+  "version": "0.0.1",
+  "description": "Easylogging++ binding for Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"No tests available\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muflihun/easyloggingpp-node.git"
+  },
+  "keywords": [
+    "logging",
+    "efficient-logging",
+    "easylogging",
+    "easylogging++"
+  ],
+  "author": "Muflihun Labs <info@muflihun.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/muflihun/easyloggingpp-node/issues"
+  },
+  "homepage": "https://github.com/muflihun/easyloggingpp-node#readme",
+  "dependencies": {
+    "bindings": "^1.3.0",
+    "nan": "^2.10.0"
+  }
+}
