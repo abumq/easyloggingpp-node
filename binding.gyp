@@ -20,7 +20,7 @@
         }],
         ['OS=="win"', {
           "defines": [
-            "ELPP_DEFAULT_LOG_FILE=\"logs\"",
+            "ELPP_DEFAULT_LOG_FILE=\"logs\\output.log\"",
           ],
         }],
       ],
