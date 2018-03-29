@@ -19,9 +19,9 @@
           },
         }],
         ['OS=="win"', {
-          "defines": {
-            "ELPP_DEFAULT_LOG_FILE=\"logs\""
-          },
+          "defines": [
+            "ELPP_DEFAULT_LOG_FILE=\"logs\"",
+          ],
         }],
       ],
       "include_dirs": [
