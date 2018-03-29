@@ -56,7 +56,7 @@ exports.confJson = (jsonOrFilename) => {
     return false;
 }
 
-exports.translateArgs = (...args) => {
+exports.translateArgs = (logErrorStack, ...args) => {
     const cpy = args;
     for (var idx = 0; idx < cpy.length; ++idx) {
         if (!cpy[idx]) {

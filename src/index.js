@@ -37,7 +37,7 @@ const Logger = function(id) {
 
     this._source_base_index = 5;
     this._write_log = (level, vlevel, fmt, ...args) => {
-        const fullMessage = CommonUtils.translateArgs(...args);
+        const fullMessage = CommonUtils.translateArgs(logErrorStack, ...args);
 
         easyloggingpp.write_log(this.id,
                                 this.log_sources.getSourceFile(),
