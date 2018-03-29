@@ -137,6 +137,10 @@ NAN_METHOD(WriteLog) {
         vlevel = *Nan::Utf8String(info[6]);
     }
 
+    std::cout << " vlevel " << vlevel << std::endl;
+    std::cout << " level " << level << std::endl;
+    std::cout << " line " << line << std::endl;
+
     el::base::type::LineNumber lineNumb = stoi(line);
     el::Level lvl = static_cast<el::Level>(stoi(level));
     el::base::type::VerboseLevel vl = stoi(vlevel);
