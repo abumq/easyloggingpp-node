@@ -16,20 +16,37 @@ npm install --save easyloggingpp
 ## Getting Started
 ```
 const easyloggingpp = require('easyloggingpp');
+const ConfigType = easyloggingpp.ConfigType;
+const Level = easyloggingpp.Level;
+const logger = easyloggingpp.getLogger('mylogger'); // register logger
 
-const logger = easyloggingpp.getLogger('logger1');
+easyloggingpp.configureAllLoggers([
+    {
+        config: ConfigType.Format,
+        value: '%levshort %datetime %fbase:%line %msg',  // <-- fbase or file for full path 
+    },
+    {
+        config: ConfigType.Filename,
+        value: 'logs/output.log'
+    }
+]);
+
+// alternatively you can use following to set default configurations
+// for future loggers as well as existing logger
+easyloggingpp.configureAllLoggers({
+    config_file: 'easylogging-config.conf',
+});
 
 logger.info('simple log');
-
 logger.info('array %s', [1, 2, 3]);
-
 var person = { 'name': 'Adam', 'age': 960, }
 logger.info('obj %s', person);
 
-logger.info('null %s', null);
-
-logger.info('undefined %s', undefined);
+logger.error('an error occurred %s', new Error("error msg"));
 ```
+
+Above will print something like:
+![sample-output]
 
 ## Log
 ```
@@ -173,3 +190,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+  [banner]: https://github.com/muflihun/easyloggingpp-node/raw/master/rc/output.png
+
+
