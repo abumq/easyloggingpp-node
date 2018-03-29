@@ -9,9 +9,13 @@ console.log(`version: ${easyloggingpp.version()}`);
 
 const logger = easyloggingpp.getLogger('mylogger');
 
+console.log('Logger registered');
+
 logger.configure({
     config_file: 'test/easylogging-config.conf'
 });
+
+console.log('Logger configured');
 
 logger.info('info log after first config');
 
