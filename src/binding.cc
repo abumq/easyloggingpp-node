@@ -63,6 +63,9 @@ NAN_METHOD(HasFlag)
 
 NAN_METHOD(RegisterLogger)
 {
+    if (!info[0]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid logger ID. Please provide string."));
+    }
     const std::string loggerId = *Nan::Utf8String(info[0]);
     
     if (!el::Logger::isValidId(loggerId)) {
@@ -73,7 +76,14 @@ NAN_METHOD(RegisterLogger)
 
 NAN_METHOD(ConfigureFromFile)
 {
+    if (!info[0]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid logger ID. Please provide string."));
+    }
     const std::string loggerId = *Nan::Utf8String(info[0]);
+
+    if (!info[1]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid config file. Please provide string."));
+    }
     const std::string file = *Nan::Utf8String(info[1]);
 
     el::Configurations conf(file);
@@ -83,6 +93,9 @@ NAN_METHOD(ConfigureFromFile)
 
 NAN_METHOD(ConfigureValue)
 {
+    if (!info[0]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid logger ID. Please provide string."));
+    }
     const std::string loggerId = *Nan::Utf8String(info[0]);
 
     el::ConfigurationType config = el::ConfigurationType::Unknown;
@@ -92,6 +105,9 @@ NAN_METHOD(ConfigureValue)
         return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
     }
 
+    if (!info[2]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid config value. Please provide string."));
+    }
     const std::string value = *Nan::Utf8String(info[2]);
 
     el::Logger* logger = el::Loggers::getLogger(loggerId, true);
@@ -100,6 +116,9 @@ NAN_METHOD(ConfigureValue)
 
 NAN_METHOD(ConfigureAllFromFile)
 {
+    if (!info[0]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid config file. Please provide string."));
+    }
     const std::string file = *Nan::Utf8String(info[0]);
 
     el::Configurations conf(file);
@@ -113,6 +132,10 @@ NAN_METHOD(ConfigureAllValue)
         config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[0]).FromJust());
     } else {
         return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
+    }
+
+    if (!info[1]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid config value. Please provide string."));
     }
     const std::string value = *Nan::Utf8String(info[1]);
 
@@ -135,6 +158,9 @@ NAN_METHOD(ConfigureAllValueByLevel)
         return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
     }
 
+    if (!info[2]->IsString()) {
+        return Nan::ThrowError(Nan::Error("Invalid config value. Please provide string."));
+    }
     const std::string value = *Nan::Utf8String(info[2]);
 
     el::Loggers::reconfigureAllLoggers(level, config, value);
