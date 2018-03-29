@@ -127,6 +127,9 @@ NAN_METHOD(WriteLog) {
     const std::string level = *Nan::Utf8String(info[5]);
     const std::string vlevel = *Nan::Utf8String(info[6]);
 
+
+std::cout << "Converting level: " << level << std::endl;
+
     el::base::type::LineNumber lineNumb = 0;
     if (line != "undefined" && line != "null") {
         lineNumb = stoi(line);
@@ -136,6 +139,9 @@ NAN_METHOD(WriteLog) {
     if (vlevel != "undefined" && vlevel != "null") {
         vl = stoi(vlevel);
     }
+
+std::cout << "Write log: " << msg << std::endl;
+
     el::base::Writer(lvl,
                      file.c_str(),
                      lineNumb, func.c_str(),
