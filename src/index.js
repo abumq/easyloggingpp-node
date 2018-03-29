@@ -18,6 +18,8 @@ const util = require('util');
 const easyloggingpp = require('bindings')('easyloggingpp');
 const CommonUtils = require('./common');
 
+let logErrorStack = true;
+
 const Logger = function(id) {
     this.id = id;
 
@@ -38,7 +40,15 @@ const Logger = function(id) {
         const cpy = args;
         for (var idx = 0; idx < cpy.length; ++idx) {
             if (typeof cpy[idx] === 'object') {
-                cpy[idx] = JSON.stringify(cpy[idx]);
+                if (cpy[idx] instanceof Error) {
+                    cpy[idx] = logErrorStack ? cpy[idx].stack : cpy[idx].toString();
+                } else if (typeof cpy[idx].toString === 'function') {
+                    cpy[idx] = cpy[idx].toString();
+                } else if (typeof cpy[idx].stringify === 'function') {
+                    cpy[idx] = cpy[idx].stringify();
+                } else {
+                    cpy[idx] = JSON.stringify(cpy[idx]);
+                }
             }
         }
 
@@ -111,3 +121,4 @@ exports.configureAllLoggers = configureAllLoggers;
 exports.Level = CommonUtils.LoggingLevels;
 exports.ConfigType = CommonUtils.ConfigurationType;
 exports.LoggingFlag = CommonUtils.LoggingFlag;
+exports.setLogErrorStack = (value) => logErrorStack = value;

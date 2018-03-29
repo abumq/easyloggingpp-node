@@ -8,7 +8,7 @@ const Level = easyloggingpp.Level;
 const logger = easyloggingpp.getLogger('mylogger');
 
 logger.configure({
-    config_file: 'default.conf'
+    config_file: 'easylogging-config.conf'
 });
 
 logger.info('info log after first config');
