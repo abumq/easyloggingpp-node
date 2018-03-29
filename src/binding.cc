@@ -130,10 +130,10 @@ NAN_METHOD(WriteLog) {
     if (info[5]->IsNumber()) {
         level = *Nan::Utf8String(info[5]);
     }
-    if (info[5]->IsNumber()) {
+    if (info[2]->IsNumber()) {
         line = *Nan::Utf8String(info[2]);
     }
-    if (info[5]->IsNumber()) {
+    if (info[6]->IsNumber()) {
         vlevel = *Nan::Utf8String(info[6]);
     }
 
