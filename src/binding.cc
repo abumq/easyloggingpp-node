@@ -121,26 +121,29 @@ NAN_METHOD(ConfigureAllValueByLevel)
 NAN_METHOD(WriteLog) {
     const std::string loggerId = *Nan::Utf8String(info[0]);
     const std::string file = *Nan::Utf8String(info[1]);
-    const std::string line = *Nan::Utf8String(info[2]);
     const std::string func = *Nan::Utf8String(info[3]);
     const std::string msg = *Nan::Utf8String(info[4]);
-    const std::string level = *Nan::Utf8String(info[5]);
-    const std::string vlevel = *Nan::Utf8String(info[6]);
-
+    std::string level = "128";
+    std::string line = "0";
+    std::string vlevel = "0";
+    
+    if (info[5]->IsNumber()) {
+        level = *Nan::Utf8String(info[5]);
+    }
+    if (info[5]->IsNumber()) {
+        line = *Nan::Utf8String(info[2]);
+    }
+    if (info[5]->IsNumber()) {
+        vlevel = *Nan::Utf8String(info[6]);
+    }
 
 std::cout << "Converting line: " << line << std::endl;
 std::cout << "Converting vlevel: " << vlevel << std::endl;
 std::cout << "Converting level: " << level << std::endl;
 
-    el::base::type::LineNumber lineNumb = 0;
-    if (line != "undefined" && line != "null") {
-        lineNumb = stoi(line);
-    }
+    el::base::type::LineNumber lineNumb = stoi(line);
     el::Level lvl = static_cast<el::Level>(stoi(level));
-    el::base::type::VerboseLevel vl = 0;
-    if (vlevel != "undefined" && vlevel != "null") {
-        vl = stoi(vlevel);
-    }
+    el::base::type::VerboseLevel vl = stoi(vlevel);
 
 std::cout << "Write log: " << msg << std::endl;
 
