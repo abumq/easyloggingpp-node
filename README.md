@@ -14,7 +14,7 @@ npm install --save easyloggingpp
 ```
 
 ## Getting Started
-```
+```js
 const easyloggingpp = require('easyloggingpp');
 const ConfigType = easyloggingpp.ConfigType;
 const Level = easyloggingpp.Level;
@@ -53,7 +53,7 @@ Above will print something like:
 ![sample-output]
 
 ## Log
-```
+```js
 logger.warn(...);
 logger.error(...);
 logger.debug(...);
@@ -64,7 +64,7 @@ logger.verbose(verbose-level, ...);
 
 ## Global Configuration
 ### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
-```
+```js
 easyloggingpp.configureAllLoggers({
     config_file: 'easylogging-config.conf',
 });
@@ -73,14 +73,14 @@ easyloggingpp.configureAllLoggers({
 This will configure all the existing loggers and set this new configuation to default for future loggers.
 
 ### All Levels
-```
+```js
 easyloggingpp.configureAllLoggers({
     config: easyloggingpp.ConfigType.Format,
     value: '%datetime %msg',
 });
 ```
 **or using array**
-```
+```js
 easyloggingpp.configureAllLoggers([
   {
       config: easyloggingpp.ConfigType.Format,
@@ -96,7 +96,7 @@ easyloggingpp.configureAllLoggers([
 This will configure existing loggers but will not change future loggers.
 
 ### Specific Level
-```
+```js
 easyloggingpp.configureAllLoggers({
     level: easyloggingpp.Level.Info,
     config: easyloggingpp.ConfigType.Format,
@@ -104,7 +104,7 @@ easyloggingpp.configureAllLoggers({
 });
 ```
 **or using array**
-```
+```js
 easyloggingpp.configureAllLoggers([
   {
       level: easyloggingpp.Level.Info,
@@ -122,7 +122,7 @@ This will configure existing loggers but will not change future loggers.
 
 ## Logger Configuration
 ### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
-```
+```js
 const logger = easyloggingpp.getLogger('logger1');
 logger.configure({
     config_file: 'easylogging-config.conf',
@@ -130,7 +130,7 @@ logger.configure({
 ```
 
 ### All Levels
-```
+```js
 const logger = easyloggingpp.getLogger('logger1');
 
 logger.configure({
@@ -139,7 +139,7 @@ logger.configure({
 });
 ```
 **or using array**
-```
+```js
 const logger = easyloggingpp.getLogger('logger1');
 logger.configure({
     config: easyloggingpp.ConfigType.Format,
@@ -148,7 +148,7 @@ logger.configure({
 ```
 
 ### Specific Level
-```
+```js
 const logger = easyloggingpp.getLogger('logger1');
 
 logger.configure({
@@ -157,7 +157,7 @@ logger.configure({
 });
 ```
 **or using array**
-```
+```js
 const logger = easyloggingpp.getLogger('logger1');
 logger.configure({
     config: easyloggingpp.ConfigType.Format,
@@ -168,7 +168,7 @@ logger.configure({
 This will configure existing loggers but will not change future loggers.
 
 ## Add/Remove [Logging Flag](https://github.com/muflihun/easyloggingpp#logging-flags)
-```
+```js
 easyloggingpp.addFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 easyloggingpp.removeFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 ```
