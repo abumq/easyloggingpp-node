@@ -1,20 +1,20 @@
 //
 // Copyright 2017-present Muflihun Labs
 //
-// Part of easyloggingpp module
+// Common utils for Easylogging++ and Residue Node.js client
 //
 // Author: @abumusamq
 //
 // https://muflihun.com
-// https://muflihun.github.io/easyloggingpp
-// https://github.com/muflihun/easyloggingpp
+// https://muflihun.github.io/residue
+// https://github.com/muflihun/residue-node
 // https://github.com/muflihun/easyloggingpp-node
 //
 
+"use strict";
+
 const fs = require('fs');
 const path = require('path');
-
-"use strict";
 
 // Get location of callstack in <file>:<line> format
 const getSourceLocation = (splitChar, baseIdx) => {
@@ -56,6 +56,25 @@ exports.confJson = (jsonOrFilename) => {
     return false;
 }
 
+exports.translateArgs = (...args) => {
+    const cpy = args;
+    for (var idx = 0; idx < cpy.length; ++idx) {
+        if (!cpy[idx]) {
+            continue;
+        }
+        if (cpy[idx] instanceof Error) {
+            cpy[idx] = logErrorStack ? cpy[idx].stack : cpy[idx].toString();
+        } else if (typeof cpy[idx].toString === 'function') {
+            cpy[idx] = cpy[idx].toString();
+        } else if (typeof cpy[idx].stringify === 'function') {
+            cpy[idx] = cpy[idx].stringify();
+        } else {
+            cpy[idx] = JSON.stringify(cpy[idx]);
+        }
+    }
+    return cpy;
+}
+
 exports.LoggingLevels = {
     Global: 1,
     Trace: 2,
@@ -64,7 +83,7 @@ exports.LoggingLevels = {
     Error: 16,
     Warning: 32,
     Verbose: 64,
-    Info: 128
+    Info: 128,
 };
 
 exports.ConfigurationType = {
@@ -95,5 +114,5 @@ exports.LoggingFlag = {
     HierarchicalLogging: 2048,
     CreateLoggerAutomatically: 4096,
     AutoSpacing: 8192,
-    FixedTimeFormat: 16384
+    FixedTimeFormat: 16384,
 }
