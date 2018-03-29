@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.25]
+ - Build for Windows fixed
+ 
 ## [1.0.13]
  - Simplified internal binding
 
