@@ -54,12 +54,13 @@ Above will print something like:
 
 ## Log
 ```js
+logger.info(...);
 logger.warn(...);
 logger.error(...);
 logger.debug(...);
 logger.trace(...);
 logger.fatal(...);
-logger.verbose(verbose-level, ...);
+logger.verbose(verbose_level, ...);
 ```
 
 ## Global Configuration
