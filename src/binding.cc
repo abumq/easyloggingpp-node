@@ -32,33 +32,33 @@ NAN_METHOD(Version)
 
 NAN_METHOD(AddFlag)
 {
-    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
     if (info[0]->IsNumber()) {
-        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        el::LoggingFlag loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        el::Loggers::addFlag(loggingFlag);
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid LoggingFlag. Please use easloggingpp.LoggingFlag"));
     }
-
-    el::Loggers::addFlag(loggingFlag);
 }
 
 NAN_METHOD(RemoveFlag)
 {
-    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
     if (info[0]->IsNumber()) {
-        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        el::LoggingFlag loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        el::Loggers::removeFlag(loggingFlag);
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid LoggingFlag. Please use easloggingpp.LoggingFlag"));
     }
-    el::Loggers::removeFlag(loggingFlag);
 }
 
 NAN_METHOD(HasFlag)
 {
-    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
     if (info[0]->IsNumber()) {
-        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        el::LoggingFlag loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+        bool has = el::Loggers::hasFlag(loggingFlag);
+        info.GetReturnValue().Set(has ? Nan::True() : Nan::False());
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid LoggingFlag. Please use easloggingpp.LoggingFlag"));
     }
-
-    bool has = el::Loggers::hasFlag(loggingFlag);
-
-    info.GetReturnValue().Set(has ? Nan::True() : Nan::False());
 }
 
 NAN_METHOD(RegisterLogger)
@@ -88,6 +88,8 @@ NAN_METHOD(ConfigureValue)
     el::ConfigurationType config = el::ConfigurationType::Unknown;
     if (info[1]->IsNumber()) {
         config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[1]).FromJust());
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
     }
 
     const std::string value = *Nan::Utf8String(info[2]);
@@ -109,6 +111,8 @@ NAN_METHOD(ConfigureAllValue)
     el::ConfigurationType config = el::ConfigurationType::Unknown;
     if (info[0]->IsNumber()) {
         config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[0]).FromJust());
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
     }
     const std::string value = *Nan::Utf8String(info[1]);
 
@@ -120,11 +124,15 @@ NAN_METHOD(ConfigureAllValueByLevel)
     el::Level level = el::Level::Unknown;
     if (info[0]->IsNumber()) {
         level = static_cast<el::Level>(To<el::base::type::EnumType>(info[0]).FromJust());
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid Level. Please use easyloggingpp.Level"));
     }
 
     el::ConfigurationType config = el::ConfigurationType::Unknown;
     if (info[1]->IsNumber()) {
         config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[1]).FromJust());
+    } else {
+        return Nan::ThrowError(Nan::Error("Invalid ConfigType. Please use easyloggingpp.ConfigType"));
     }
 
     const std::string value = *Nan::Utf8String(info[2]);
