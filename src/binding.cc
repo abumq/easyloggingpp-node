@@ -32,27 +32,29 @@ NAN_METHOD(Version)
 
 NAN_METHOD(AddFlag)
 {
-    const std::string flag = *Nan::Utf8String(info[0]);
-
-    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
+    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
+    if (info[0]->IsNumber()) {
+        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+    }
 
     el::Loggers::addFlag(loggingFlag);
 }
 
 NAN_METHOD(RemoveFlag)
 {
-    const std::string flag = *Nan::Utf8String(info[0]);
-
-    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
-
+    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
+    if (info[0]->IsNumber()) {
+        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+    }
     el::Loggers::removeFlag(loggingFlag);
 }
 
 NAN_METHOD(HasFlag)
 {
-    const std::string flag = *Nan::Utf8String(info[0]);
-
-    el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
+    el::LoggingFlag loggingFlag = el::LoggingFlag::MultiLoggerSupport;
+    if (info[0]->IsNumber()) {
+        loggingFlag = static_cast<el::LoggingFlag>(To<el::base::type::EnumType>(info[0]).FromJust());
+    }
 
     bool has = el::Loggers::hasFlag(loggingFlag);
 
@@ -82,10 +84,14 @@ NAN_METHOD(ConfigureFromFile)
 NAN_METHOD(ConfigureValue)
 {
     const std::string loggerId = *Nan::Utf8String(info[0]);
-    const std::string configType = *Nan::Utf8String(info[1]);
+
+    el::ConfigurationType config = el::ConfigurationType::Unknown;
+    if (info[1]->IsNumber()) {
+        config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[1]).FromJust());
+    }
+
     const std::string value = *Nan::Utf8String(info[2]);
 
-    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
     el::Logger* logger = el::Loggers::getLogger(loggerId, true);
     el::Loggers::reconfigureLogger(logger->id(), config, value);
 }
@@ -100,21 +106,29 @@ NAN_METHOD(ConfigureAllFromFile)
 
 NAN_METHOD(ConfigureAllValue)
 {
-    const std::string configType = *Nan::Utf8String(info[0]);
+    el::ConfigurationType config = el::ConfigurationType::Unknown;
+    if (info[0]->IsNumber()) {
+        config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[0]).FromJust());
+    }
     const std::string value = *Nan::Utf8String(info[1]);
 
-    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
     el::Loggers::reconfigureAllLoggers(config, value);
 }
 
 NAN_METHOD(ConfigureAllValueByLevel)
 {
-    const std::string levelType = *Nan::Utf8String(info[0]);
-    const std::string configType = *Nan::Utf8String(info[1]);
+    el::Level level = el::Level::Unknown;
+    if (info[0]->IsNumber()) {
+        level = static_cast<el::Level>(To<el::base::type::EnumType>(info[0]).FromJust());
+    }
+
+    el::ConfigurationType config = el::ConfigurationType::Unknown;
+    if (info[1]->IsNumber()) {
+        config = static_cast<el::ConfigurationType>(To<el::base::type::EnumType>(info[1]).FromJust());
+    }
+
     const std::string value = *Nan::Utf8String(info[2]);
 
-    el::Level level(static_cast<el::Level>(stoi(levelType)));
-    el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
     el::Loggers::reconfigureAllLoggers(level, config, value);
 }
 
@@ -128,13 +142,13 @@ NAN_METHOD(WriteLog) {
     el::base::type::VerboseLevel vl = 0;
     
     if (info[5]->IsNumber()) {
-        level = static_cast<el::Level>(To<unsigned int>(info[5]).FromJust());
+        level = static_cast<el::Level>(To<el::base::type::EnumType>(info[5]).FromJust());
     }
     if (info[2]->IsNumber() && info[2]->IsNumber()) {
-        line = static_cast<el::base::type::LineNumber>(To<unsigned int>(info[2]).FromJust());
+        line = static_cast<el::base::type::LineNumber>(To<el::base::type::EnumType>(info[2]).FromJust());
     }
     if (info[6]->IsNumber()) {
-        vl = static_cast<el::base::type::VerboseLevel>(To<unsigned int>(info[6]).FromJust());
+        vl = static_cast<el::base::type::VerboseLevel>(To<el::base::type::EnumType>(info[6]).FromJust());
     }
 
     el::base::Writer(level,

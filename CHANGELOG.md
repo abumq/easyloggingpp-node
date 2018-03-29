@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.26]
+## [1.0.27]
  - Build for Windows fixed
  
 ## [1.0.13]
