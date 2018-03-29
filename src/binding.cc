@@ -128,6 +128,8 @@ NAN_METHOD(WriteLog) {
     const std::string vlevel = *Nan::Utf8String(info[6]);
 
 
+std::cout << "Converting line: " << line << std::endl;
+std::cout << "Converting vlevel: " << vlevel << std::endl;
 std::cout << "Converting level: " << level << std::endl;
 
     el::base::type::LineNumber lineNumb = 0;
