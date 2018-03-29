@@ -5,6 +5,8 @@ const Level = easyloggingpp.Level;
 // alternatively you will do
 // import 
 
+console.log(`version: ${easyloggingpp.version()}`);
+
 const logger = easyloggingpp.getLogger('mylogger');
 
 logger.configure({
