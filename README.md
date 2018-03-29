@@ -213,6 +213,14 @@ logger.finishProfiling('profiling-id', (item) => {
 });
 ```
 
+## Notes
+Some notes for those who have previous experience with Easylogging++ (and for those who are absolutely new)
+
+* Logs are written to `/dev/null` by default. You must configure via `easyloggingpp.configureAllLoggers` at initialization.
+* Loggers are created automatically when you use `easyloggingpp.getLogger`.
+* `ColoredTerminalOutput` flag is set by default. You can unset it using `easyloggingpp.removeFlag`
+* You can safely log with `Fatal` level as `DisableApplicationAbortOnFatalLog` flag is set by default. You should not remove this flag. [Read more](https://github.com/muflihun/easyloggingpp#logging-flags)
+
 ## License
 ```
 Copyright 2017-present Muflihun Labs
