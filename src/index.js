@@ -27,7 +27,7 @@ const Logger = function(id) {
 
     this.trace = (fmt, ...args)           => this._write_log(CommonUtils.LoggingLevels.Trace, undefined, fmt, ...args);
     this.debug = (fmt, ...args)           => this._write_log(CommonUtils.LoggingLevels.Debug, undefined, fmt, ...args);
-    this.fatal = (vlevel, fmt, ...args)   => this._write_log(CommonUtils.LoggingLevels.Fatal, vlevel, fmt, ...args);
+    this.fatal = (fmt, ...args)           => this._write_log(CommonUtils.LoggingLevels.Fatal, undefined, fmt, ...args);
     this.error = (fmt, ...args)           => this._write_log(CommonUtils.LoggingLevels.Error, undefined, fmt, ...args);
     this.warn = (fmt, ...args)            => this._write_log(CommonUtils.LoggingLevels.Warning, undefined, fmt, ...args);
     this.verbose = (vlevel, fmt, ...args) => this._write_log(CommonUtils.LoggingLevels.Verbose, vlevel, fmt, ...args);

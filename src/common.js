@@ -57,7 +57,7 @@ exports.confJson = (jsonOrFilename) => {
 }
 
 exports.LoggingLevels = {
-    Trace: 1,
+    Global: 1,
     Trace: 2,
     Debug: 4,
     Fatal: 8,

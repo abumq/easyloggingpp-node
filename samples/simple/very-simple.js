@@ -28,4 +28,5 @@ logger.info('obj %s', person);
 logger.error('an error occurred %s', new Error("error msg"));
 
 easyloggingpp.setLogErrorStack(false);
+logger.fatal('serious error occurred %s', new Error("fatal msg"));
 logger.error('an error occurred %s', new Error("error msg"));
