@@ -81,7 +81,7 @@ Taken from [utils.format](https://nodejs.org/docs/latest/api/util.html#util_util
 | %j | JSON. Replaced with the string '[Circular]' if the argument contains circular references. |
 | %% | single percent sign ('%'). This does not consume an argument. |
 
-`%o` and `%O` should not be used.
+`%o` and `%O` should not be used. Use `%s` instead for better output.
 
 ## Global Configuration
 ### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
