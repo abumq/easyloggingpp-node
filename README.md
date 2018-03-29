@@ -63,6 +63,26 @@ logger.fatal(...);
 logger.verbose(verbose_level, ...);
 ```
 
+## Log Formats
+You can use advanced logging format specifiers. 
+
+```
+logger.info('array %s', [1, 2, 3]);
+```
+
+Taken from [utils.format](https://nodejs.org/docs/latest/api/util.html#util_util_format_format_args)
+
+| Format specifier | Explanation |
+|----|-----|
+| %s | String. |
+| %d | Number (integer or floating point value). |
+| %i | Integer. |
+| %f | Floating point value. |
+| %j | JSON. Replaced with the string '[Circular]' if the argument contains circular references. |
+| %% | single percent sign ('%'). This does not consume an argument. |
+
+`%o` and `%O` should not be used.
+
 ## Global Configuration
 ### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
 ```js
@@ -173,6 +193,7 @@ This will configure existing loggers but will not change future loggers.
 easyloggingpp.addFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 easyloggingpp.removeFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 ```
+
 
 ## Profiler
 You can use built-in profiler
