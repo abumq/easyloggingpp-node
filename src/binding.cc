@@ -32,9 +32,8 @@ NAN_METHOD(Version)
 
 NAN_METHOD(AddFlag)
 {
+    const std::string flag = *Nan::Utf8String(info[0]);
 
-    String::Utf8Value flagParam(info[0]->ToString());
-    std::string flag(*flagParam);
     el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
 
     el::Loggers::addFlag(loggingFlag);
@@ -42,8 +41,8 @@ NAN_METHOD(AddFlag)
 
 NAN_METHOD(RemoveFlag)
 {
-    String::Utf8Value flagParam(info[0]->ToString());
-    std::string flag(*flagParam);
+    const std::string flag = *Nan::Utf8String(info[0]);
+
     el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
 
     el::Loggers::removeFlag(loggingFlag);
@@ -51,8 +50,8 @@ NAN_METHOD(RemoveFlag)
 
 NAN_METHOD(HasFlag)
 {
-    String::Utf8Value flagParam(info[0]->ToString());
-    std::string flag(*flagParam);
+    const std::string flag = *Nan::Utf8String(info[0]);
+
     el::LoggingFlag loggingFlag(static_cast<el::LoggingFlag>(stoi(flag)));
 
     bool has = el::Loggers::hasFlag(loggingFlag);
@@ -63,8 +62,9 @@ NAN_METHOD(HasFlag)
 NAN_METHOD(RegisterLogger)
 {
     const std::string loggerId = *Nan::Utf8String(info[0]);
+    
     if (!el::Logger::isValidId(loggerId)) {
-        return Nan::ThrowError(Nan::Error("Invalid logger ID. Allowed characters are alphanumeric with hyphen, underscore or dot"));
+        return Nan::ThrowError(Nan::Error("Invalid logger ID. Allowed characters are alpha-numeric, hyphen, underscore or dot"));
     }
     el::Loggers::getLogger(loggerId, true);
 }

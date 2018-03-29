@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.12]
+## [1.0.13]
  - Simplified internal binding
 
 ## [1.0.11]
