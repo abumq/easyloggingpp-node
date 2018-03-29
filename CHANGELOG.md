@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.10]
+ - Fix normal object
+
 ## [1.0.9]
  - Added profiler
 

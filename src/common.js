@@ -65,7 +65,11 @@ exports.translateArgs = (logErrorStack, ...args) => {
         if (cpy[idx] instanceof Error) {
             cpy[idx] = logErrorStack ? cpy[idx].stack : cpy[idx].toString();
         } else if (typeof cpy[idx].toString === 'function') {
-            cpy[idx] = cpy[idx].toString();
+            const str = cpy[idx].toString();
+            if (str === '[object Object]') {
+                str = JSON.stringify(cpy[idx]);
+            }
+            cpy[idx] = str;
         } else if (typeof cpy[idx].stringify === 'function') {
             cpy[idx] = cpy[idx].stringify();
         } else {
