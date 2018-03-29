@@ -174,6 +174,24 @@ easyloggingpp.addFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 easyloggingpp.removeFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 ```
 
+## Profiler
+You can use built-in profiler
+```js
+logger.startProfiling('profiling-id');
+// some heavy task
+for (var i = 0; i < 100000; ++i) {
+    
+}
+logger.endProfiling('profiling-id');
+
+// other tasks that will not be profiled
+// if needed or you could use finishProfiling directly
+
+logger.finishProfiling('profiling-id', (item) => {
+    logger.info(`finished profiling in ${item.diff}ms`);
+});
+```
+
 ## License
 ```
 Copyright 2017-present Muflihun Labs

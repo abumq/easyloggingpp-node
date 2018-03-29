@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.9]
+ - Added profiler
+
 ## [1.0.8]
  - Fix verbose logging
  

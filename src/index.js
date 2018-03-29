@@ -23,6 +23,8 @@ let logErrorStack = true;
 const Logger = function(id) {
     this.id = id;
 
+    this._profilings = {};
+
     easyloggingpp.register_logger(this.id);
 
     this.trace = (fmt, ...args)           => this._write_log(CommonUtils.LoggingLevels.Trace, undefined, fmt, ...args);
@@ -33,6 +35,36 @@ const Logger = function(id) {
     this.verbose = (vlevel, fmt, ...args) => this._write_log(CommonUtils.LoggingLevels.Verbose, vlevel, fmt, ...args);
     this.info = (fmt, ...args)            => this._write_log(CommonUtils.LoggingLevels.Info, undefined, fmt, ...args);
 
+    this.startProfiling = (id) => {
+        this._profilings[id] = {
+            start: new Date().getTime(),
+        };
+    }
+
+    this.endProfiling = (id) => {
+        if (this._profilings[id]) {
+            this._profilings[id].end = new Date().getTime();
+        }
+    }
+
+    this.finishProfiling = (id, callbk) => {
+        if (this._profilings[id]) {
+            if (!this._profilings[id].end) {
+                this.endProfiling(id);
+            }
+            if (!callbk) {
+                return;
+            }
+            const start = this._profilings[id].start;
+            const end = this._profilings[id].end;
+            callbk({
+                id: id,
+                start: start,
+                end: end,
+                diff: end - start,
+            });
+        }
+    }
     // private members
 
     this._source_base_index = 5;
