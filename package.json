@@ -4,7 +4,7 @@
   "description": "Easylogging++ binding for Node.js",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"No tests available\" && exit 1",
+    "test": "node samples/simple/index.js",
     "install": "node-gyp rebuild"
   },
   "repository": {
