@@ -191,6 +191,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-  [banner]: https://github.com/muflihun/easyloggingpp-node/raw/master/rc/output.png
+  [sample-output]: https://github.com/muflihun/easyloggingpp-node/raw/master/rc/output.png
 
 
