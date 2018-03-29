@@ -167,6 +167,7 @@ NAN_MODULE_INIT(InitAll)
 {
     el::Loggers::addFlag(el::LoggingFlag::DisableApplicationAbortOnFatalLog);
     el::Loggers::addFlag(el::LoggingFlag::ColoredTerminalOutput);
+    el::Loggers::addFlag(el::LoggingFlag::AllowVerboseIfModuleNotSpecified);
 
     #define DEFINE_FN(name, callback) Set(target, New<String>(#name).ToLocalChecked(), \
         GetFunction(New<FunctionTemplate>(callback)).ToLocalChecked())
