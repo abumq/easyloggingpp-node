@@ -10,7 +10,7 @@
         "ELPP_FEATURE_CRASH_LOG",
         "ELPP_DEFAULT_LOG_FILE=\"/dev/null\""
       ],
-      "cflags": [
+      "cflags!": [
         "-fexceptions",
         "-std=c++11",
       ],
