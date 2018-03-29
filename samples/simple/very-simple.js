@@ -6,7 +6,7 @@ const logger = easyloggingpp.getLogger('mylogger'); // register logger
 easyloggingpp.configureAllLoggers([
     {
         config: ConfigType.Format,
-        value: '%levshort %datetime %fbase:%line %msg',  // <-- fbase or file for full path 
+        value: '%levshort %datetime{%H:%m:%s} %fbase:%line %msg',  // <-- fbase or file for full path 
     },
     {
         config: ConfigType.Filename,
@@ -16,9 +16,9 @@ easyloggingpp.configureAllLoggers([
 
 // alternatively you can use following to set default configurations
 // for future loggers as well as existing logger
-easyloggingpp.configureAllLoggers({
-    config_file: 'easylogging-config.conf',
-});
+//easyloggingpp.configureAllLoggers({
+//    config_file: 'easylogging-config.conf',
+//});
 
 logger.info('simple log');
 logger.info('array %s', [1, 2, 3]);
