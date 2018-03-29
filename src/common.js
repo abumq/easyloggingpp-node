@@ -1,14 +1,14 @@
 //
 // Copyright 2017-present Muflihun Labs
 //
-// Part of residue-node
+// Part of easyloggingpp module
 //
 // Author: @abumusamq
 //
 // https://muflihun.com
-// https://muflihun.github.io/residue
-// https://github.com/muflihun/residue-node
-// https://github.com/muflihun/residue-node-native
+// https://muflihun.github.io/easyloggingpp
+// https://github.com/muflihun/easyloggingpp
+// https://github.com/muflihun/easyloggingpp-node
 //
 
 const fs = require('fs');
