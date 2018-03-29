@@ -12,7 +12,7 @@
       ],
       "conditions": [
         ['OS=="linux"', {
-          "cflags!": [
+          "cflags": [
             "-fexceptions",
             "-std=c++11",
           ],
