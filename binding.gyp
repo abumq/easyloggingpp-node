@@ -10,17 +10,15 @@
         "ELPP_FEATURE_CRASH_LOG",
         "ELPP_DEFAULT_LOG_FILE=\"/dev/null\""
       ],
-      "cflags!": [
-        "-fexceptions",
-        "-std=c++11",
+      "cflags!": ["-fno-exceptions"],
+      "cflags_cc!": ["-fno-exceptions"],
+      "conditions": [
+        ['OS=="mac"', {
+          "xcode_settings": {
+            "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
+          },
+        }],
       ],
-      "xcode_settings": {
-        "OTHER_CFLAGS": [
-          "-fexceptions",
-          "-std=c++11",
-          "-stdlib=libc++"
-        ],
-      },
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "deps/"
