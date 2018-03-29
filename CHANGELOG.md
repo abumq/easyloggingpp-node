@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.12]
+ - Simplified internal binding
+
 ## [1.0.11]
  - Fix normal object
 

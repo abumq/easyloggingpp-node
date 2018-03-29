@@ -62,17 +62,17 @@ NAN_METHOD(HasFlag)
 
 NAN_METHOD(RegisterLogger)
 {
-    String::Utf8Value loggerIdParam(info[0]->ToString());
-    std::string loggerId(*loggerIdParam);
+    const std::string loggerId = *Nan::Utf8String(info[0]);
+    if (!el::Logger::isValidId(loggerId)) {
+        return Nan::ThrowError(Nan::Error("Invalid logger ID. Allowed characters are alphanumeric with hyphen, underscore or dot"));
+    }
     el::Loggers::getLogger(loggerId, true);
 }
 
 NAN_METHOD(ConfigureFromFile)
 {
-    String::Utf8Value loggerIdParam(info[0]->ToString());
-    std::string loggerId(*loggerIdParam);
-    String::Utf8Value fileParam(info[1]->ToString());
-    std::string file(*fileParam);
+    const std::string loggerId = *Nan::Utf8String(info[0]);
+    const std::string file = *Nan::Utf8String(info[1]);
 
     el::Configurations conf(file);
     el::Logger* logger = el::Loggers::getLogger(loggerId, true);
@@ -81,14 +81,9 @@ NAN_METHOD(ConfigureFromFile)
 
 NAN_METHOD(ConfigureValue)
 {
-    String::Utf8Value loggerIdParam(info[0]->ToString());
-    std::string loggerId(*loggerIdParam);
-
-    String::Utf8Value configTypeParam(info[1]->ToString());
-    std::string configType(*configTypeParam);
-
-    String::Utf8Value valueParam(info[2]->ToString());
-    std::string value(*valueParam);
+    const std::string loggerId = *Nan::Utf8String(info[0]);
+    const std::string configType = *Nan::Utf8String(info[1]);
+    const std::string value = *Nan::Utf8String(info[2]);
 
     el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
     el::Logger* logger = el::Loggers::getLogger(loggerId, true);
@@ -97,8 +92,7 @@ NAN_METHOD(ConfigureValue)
 
 NAN_METHOD(ConfigureAllFromFile)
 {
-    String::Utf8Value fileParam(info[0]->ToString());
-    std::string file(*fileParam);
+    const std::string file = *Nan::Utf8String(info[0]);
 
     el::Configurations conf(file);
     el::Loggers::setDefaultConfigurations(conf, true);
@@ -106,11 +100,8 @@ NAN_METHOD(ConfigureAllFromFile)
 
 NAN_METHOD(ConfigureAllValue)
 {
-    String::Utf8Value configTypeParam(info[0]->ToString());
-    std::string configType(*configTypeParam);
-
-    String::Utf8Value valueParam(info[1]->ToString());
-    std::string value(*valueParam);
+    const std::string configType = *Nan::Utf8String(info[0]);
+    const std::string value = *Nan::Utf8String(info[1]);
 
     el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
     el::Loggers::reconfigureAllLoggers(config, value);
@@ -118,14 +109,9 @@ NAN_METHOD(ConfigureAllValue)
 
 NAN_METHOD(ConfigureAllValueByLevel)
 {
-    String::Utf8Value levelTypeParam(info[0]->ToString());
-    std::string levelType(*levelTypeParam);
-
-    String::Utf8Value configTypeParam(info[1]->ToString());
-    std::string configType(*configTypeParam);
-
-    String::Utf8Value valueParam(info[2]->ToString());
-    std::string value(*valueParam);
+    const std::string levelType = *Nan::Utf8String(info[0]);
+    const std::string configType = *Nan::Utf8String(info[1]);
+    const std::string value = *Nan::Utf8String(info[2]);
 
     el::Level level(static_cast<el::Level>(stoi(levelType)));
     el::ConfigurationType config(static_cast<el::ConfigurationType>(stoi(configType)));
@@ -133,20 +119,14 @@ NAN_METHOD(ConfigureAllValueByLevel)
 }
 
 NAN_METHOD(WriteLog) {
-    String::Utf8Value paramLoggerId(info[0]->ToString());
-    String::Utf8Value paramFile(info[1]->ToString());
-    String::Utf8Value paramLine(info[2]->ToString());
-    String::Utf8Value paramFunc(info[3]->ToString());
-    String::Utf8Value paramMsg(info[4]->ToString());
-    String::Utf8Value paramLevel(info[5]->ToString());
-    String::Utf8Value paramVLevel(info[6]->ToString());
-    std::string loggerId(*paramLoggerId);
-    std::string file(*paramFile);
-    std::string line(*paramLine);
-    std::string func(*paramFunc);
-    std::string msg(*paramMsg);
-    std::string level(*paramLevel);
-    std::string vlevel(*paramVLevel);
+    const std::string loggerId = *Nan::Utf8String(info[0]);
+    const std::string file = *Nan::Utf8String(info[1]);
+    const std::string line = *Nan::Utf8String(info[2]);
+    const std::string func = *Nan::Utf8String(info[3]);
+    const std::string msg = *Nan::Utf8String(info[4]);
+    const std::string level = *Nan::Utf8String(info[5]);
+    const std::string vlevel = *Nan::Utf8String(info[6]);
+
     el::base::type::LineNumber lineNumb = 0;
     if (line != "undefined" && line != "null") {
         lineNumb = stoi(line);
