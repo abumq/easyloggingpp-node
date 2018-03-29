@@ -16,7 +16,7 @@
 
 const util = require('util');
 const easyloggingpp = require('bindings')('easyloggingpp');
-const CommonUtils = require('./common');
+const CommonUtils = require('residue-utils');
 
 let logErrorStack = true;
 

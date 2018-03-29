@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.10]
+## [1.0.11]
  - Fix normal object
 
 ## [1.0.9]
