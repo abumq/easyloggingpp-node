@@ -18,6 +18,11 @@
             "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
           },
         }],
+        ['OS=="win"', {
+          "defines": {
+            "ELPP_DEFAULT_LOG_FILE=\"C:\\tmp\""
+          },
+        }],
       ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
