@@ -2,6 +2,8 @@
 
 # Easylogging++ Node.js Binding
 
+[![Build Status](https://img.shields.io/travis/muflihun/easyloggingpp-node/master.svg)](https://travis-ci.org/muflihun/easyloggingpp-node/branches)
+[![Build status](https://ci.appveyor.com/api/projects/status/sfcgrehu8ypkrun3?svg=true)](https://ci.appveyor.com/project/abumusamq/easyloggingpp-node)
 [![Version](https://img.shields.io/npm/v/easyloggingpp.svg)](https://www.npmjs.com/package/easyloggingpp)
 [![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/muflihun/easyloggingpp-node/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/MuflihunDotCom/25)
