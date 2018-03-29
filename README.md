@@ -43,6 +43,10 @@ var person = { 'name': 'Adam', 'age': 960, }
 logger.info('obj %s', person);
 
 logger.error('an error occurred %s', new Error("error msg"));
+
+easyloggingpp.setLogErrorStack(false); // turn stack logging off
+logger.fatal('serious error occurred %s', new Error("fatal msg"));
+logger.error('an error occurred %s', new Error("error msg"));
 ```
 
 Above will print something like:
