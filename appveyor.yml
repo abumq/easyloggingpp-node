@@ -1,5 +1,8 @@
 environment:
-  nodejs_version: "7"
+  matrix:
+   - nodejs_version: "7"
+   - nodejs_version: "8"
+   - nodejs_version: "9"
 
 clone_script:
   - git clone -q --branch=%APPVEYOR_REPO_BRANCH% https://github.com/%APPVEYOR_REPO_NAME%.git %APPVEYOR_BUILD_FOLDER%
