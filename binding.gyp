@@ -8,7 +8,7 @@
       ],
       "defines": [
         "ELPP_FEATURE_CRASH_LOG",
-        "ELPP_DEFAULT_LOG_FILE=\"/dev/null\""
+        "ELPP_DEFAULT_LOG_FILE=\"nul\""
       ],
       "cflags!": ["-fno-exceptions"],
       "cflags_cc!": ["-fno-exceptions"],
