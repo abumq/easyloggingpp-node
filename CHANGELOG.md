@@ -1,5 +1,8 @@
 # Change Log
 
+## [9.96.3]
+ - Changed versioning to match the native version
+
 ## [1.0.29]
  - Build for Windows fixed
  
