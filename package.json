@@ -1,6 +1,6 @@
 {
   "name": "easyloggingpp",
-  "version": "9.96.3",
+  "version": "9.96.4",
   "description": "Easylogging++ binding for Node.js",
   "main": "src/index.js",
   "scripts": {
