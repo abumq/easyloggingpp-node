@@ -13,11 +13,18 @@
       "cflags!": ["-fno-exceptions"],
       "cflags_cc!": ["-fno-exceptions"],
       "conditions": [
-        ['OS=="mac"', {
-          "xcode_settings": {
-            "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
-          },
-        }],
+        ['OS=="mac"', 
+          {
+            "xcode_settings": {
+              "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
+            },
+            "ccflags": [
+               "-mmacosx-version-min=10.7",
+               "-std=c++11",
+               "-stdlib=libc++",
+            ],
+          }
+        ],
         ['OS=="win"', {
           "defines": [
             "ELPP_DEFAULT_LOG_FILE=\"nul\"",
