@@ -12,6 +12,10 @@
 
 Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/muflihun/easyloggingpp) to log important logs for your application.
 
+## Requirements
+
+ * Node 7+
+ 
 ## Download
 ```
 npm install --save easyloggingpp
