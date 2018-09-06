@@ -67,7 +67,7 @@ NAN_METHOD(RegisterLogger)
         return Nan::ThrowError(Nan::Error("Invalid logger ID. Please provide string."));
     }
     const std::string loggerId = *Nan::Utf8String(info[0]);
-    
+
     if (!el::Logger::isValidId(loggerId)) {
         return Nan::ThrowError(Nan::Error("Invalid logger ID. Allowed characters are alpha-numeric, hyphen, underscore or dot"));
     }
@@ -174,7 +174,7 @@ NAN_METHOD(WriteLog) {
     el::Level level = el::Level::Info;
     el::base::type::LineNumber line = 0;
     el::base::type::VerboseLevel vl = 0;
-    
+
     if (info[5]->IsNumber()) {
         level = static_cast<el::Level>(To<el::base::type::EnumType>(info[5]).FromJust());
     }
@@ -197,6 +197,7 @@ NAN_MODULE_INIT(InitAll)
     el::Loggers::addFlag(el::LoggingFlag::DisableApplicationAbortOnFatalLog);
     el::Loggers::addFlag(el::LoggingFlag::ColoredTerminalOutput);
     el::Loggers::addFlag(el::LoggingFlag::AllowVerboseIfModuleNotSpecified);
+    el::Loggers::addFlag(el::LoggingFlag::IgnoreSigInt);
 
     #define DEFINE_FN(name, callback) Set(target, New<String>(#name).ToLocalChecked(), \
         GetFunction(New<FunctionTemplate>(callback)).ToLocalChecked())

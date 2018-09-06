@@ -1,5 +1,10 @@
 # Change Log
 
+## [9.96.5]
+ - Check for level enabled when using custom log message
+ - Ignore interruption signal crash log
+ - Fixes seg fault with global lock
+
 ## [9.96.3]
  - Changed versioning to match the native version
 
