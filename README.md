@@ -7,15 +7,15 @@
 
 [![Version](https://img.shields.io/npm/v/easyloggingpp.svg)](https://www.npmjs.com/package/easyloggingpp)
 
-[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/muflihun/easyloggingpp-node/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/MuflihunDotCom/25)
+[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zuhd-org/easyloggingpp-node/blob/master/LICENSE)
+[![Donate](https://muflihun.github.io/donate.png?v2)](https://www.paypal.me/zuhd/25)
 
-Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/muflihun/easyloggingpp) to log important logs for your application.
+Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/zuhd-org/easyloggingpp) to log important logs for your application.
 
 ## Requirements
 
  * Node 7+
- 
+
 ## Download
 ```
 npm install --save easyloggingpp
@@ -31,7 +31,7 @@ const logger = easyloggingpp.getLogger('mylogger'); // register logger
 easyloggingpp.configureAllLoggers([
     {
         config: ConfigType.Format,
-        value: '%levshort %datetime %fbase:%line %msg',  // <-- fbase or file for full path 
+        value: '%levshort %datetime %fbase:%line %msg',  // <-- fbase or file for full path
     },
     {
         config: ConfigType.Filename,
@@ -72,7 +72,7 @@ logger.verbose(verbose_level, ...);
 ```
 
 ## Log Formats
-You can use advanced logging format specifiers. 
+You can use advanced logging format specifiers.
 
 ```
 logger.info('array %s', [1, 2, 3]);
@@ -92,7 +92,7 @@ Taken from [utils.format](https://nodejs.org/docs/latest/api/util.html#util_util
 `%o` and `%O` should not be used. Use `%s` instead for better output.
 
 ## Global Configuration
-### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
+### [via File](https://github.com/zuhd-org/easyloggingpp#using-configuration-file)
 ```js
 easyloggingpp.configureAllLoggers({
     config_file: 'easylogging-config.conf',
@@ -150,7 +150,7 @@ easyloggingpp.configureAllLoggers([
 This will configure existing loggers but will not change future loggers.
 
 ## Logger Configuration
-### [via File](https://github.com/muflihun/easyloggingpp#using-configuration-file)
+### [via File](https://github.com/zuhd-org/easyloggingpp#using-configuration-file)
 ```js
 const logger = easyloggingpp.getLogger('logger1');
 logger.configure({
@@ -196,7 +196,7 @@ logger.configure({
 
 This will configure existing loggers but will not change future loggers.
 
-## Add/Remove [Logging Flag](https://github.com/muflihun/easyloggingpp#logging-flags)
+## Add/Remove [Logging Flag](https://github.com/zuhd-org/easyloggingpp#logging-flags)
 ```js
 easyloggingpp.addFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 easyloggingpp.removeFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
@@ -209,7 +209,7 @@ You can use built-in profiler
 logger.startProfiling('profiling-id');
 // some heavy task
 for (var i = 0; i < 100000; ++i) {
-    
+
 }
 logger.endProfiling('profiling-id');
 
@@ -227,16 +227,16 @@ Some notes for those who have previous experience with Easylogging++ (and for th
 * Logs are written to `/dev/null` by default. You must configure via `easyloggingpp.configureAllLoggers` at initialization.
 * Loggers are created automatically when you use `easyloggingpp.getLogger`.
 * `ColoredTerminalOutput` flag is set by default. You can unset it using `easyloggingpp.removeFlag`
-* You can safely log with `Fatal` level as `DisableApplicationAbortOnFatalLog` flag is set by default. You should not remove this flag. [Read more](https://github.com/muflihun/easyloggingpp#logging-flags)
+* You can safely log with `Fatal` level as `DisableApplicationAbortOnFatalLog` flag is set by default. You should not remove this flag. [Read more](https://github.com/zuhd-org/easyloggingpp#logging-flags)
 
 ## License
 ```
-Copyright 2017-present Muflihun Labs
+Copyright 2017-present Zuhd Web Services
 Copyright 2017-present @abumusamq
 
-https://github.com/muflihun/
-https://muflihun.github.io/
-https://muflihun.com/
+https://github.com/zuhd-org
+https://zuhd.org
+https://muflihun.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -251,6 +251,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-  [sample-output]: https://github.com/muflihun/easyloggingpp-node/raw/master/rc/output.png
-
-
+  [sample-output]: https://github.com/zuhd-org/easyloggingpp-node/raw/master/rc/output.png
