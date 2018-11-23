@@ -8,6 +8,7 @@
 [![Version](https://img.shields.io/npm/v/easyloggingpp.svg)](https://www.npmjs.com/package/easyloggingpp)
 
 [![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zuhd-org/easyloggingpp-node/blob/master/LICENSE)
+
 [![Donate](https://muflihun.github.io/donate.png?v2)](https://www.paypal.me/zuhd/25)
 
 Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/zuhd-org/easyloggingpp) to log important logs for your application.
