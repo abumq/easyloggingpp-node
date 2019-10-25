@@ -2,14 +2,14 @@
 //  binding.cc
 //  Easylogging++ Node.js Binding
 //
-//  Copyright (C) 2017-present Zuhd Web Services
+//  Copyright (C) 2017-present Amrayn Web Services
 //  Copyright (C) 2017-present @abumusamq
 //
-//  https://zuhd.org
+//  https://amrayn.com
 //  https://muflihun.com
-//  https://github.com/zuhd-org/easyloggingpp-node
+//  https://github.com/amrayn/easyloggingpp-node
 //
-//  LICENSE @ https://github.com/zuhd-org/easyloggingpp-node/blob/master/LICENSE
+//  LICENSE @ https://github.com/amrayn/easyloggingpp-node/blob/master/LICENSE
 //
 
 #include <nan.h>

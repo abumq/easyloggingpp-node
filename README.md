@@ -2,16 +2,16 @@
 
 # Easylogging++ Node.js Binding
 
-[![Build Status](https://img.shields.io/travis/zuhd-org/easyloggingpp-node/master.svg)](https://travis-ci.org/muflihun/easyloggingpp-node/branches)
+[![Build Status](https://img.shields.io/travis/amrayn/easyloggingpp-node/master.svg)](https://travis-ci.org/muflihun/easyloggingpp-node/branches)
 [![Build status](https://ci.appveyor.com/api/projects/status/sfcgrehu8ypkrun3?svg=true)](https://ci.appveyor.com/project/abumusamq/easyloggingpp-node)
 
 [![Version](https://img.shields.io/npm/v/easyloggingpp.svg)](https://www.npmjs.com/package/easyloggingpp)
 
-[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zuhd-org/easyloggingpp-node/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/amrayn/easyloggingpp-node/blob/master/LICENSE)
 
-[![Donate](https://muflihun.github.io/donate.png?v2)](https://www.paypal.me/zuhd/25)
+[![Donate](https://amrayn.github.io/donate.png?v2)](https://amrayn.com/donate)
 
-Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/zuhd-org/easyloggingpp) to log important logs for your application.
+Easylogging++ Node.js binding provides ability to use efficient [Easylogging++](https://github.com/amrayn/easyloggingpp) to log important logs for your application.
 
 ## Requirements
 
@@ -93,7 +93,7 @@ Taken from [utils.format](https://nodejs.org/docs/latest/api/util.html#util_util
 `%o` and `%O` should not be used. Use `%s` instead for better output.
 
 ## Global Configuration
-### [via File](https://github.com/zuhd-org/easyloggingpp#using-configuration-file)
+### [via File](https://github.com/amrayn/easyloggingpp#using-configuration-file)
 ```js
 easyloggingpp.configureAllLoggers({
     config_file: 'easylogging-config.conf',
@@ -151,7 +151,7 @@ easyloggingpp.configureAllLoggers([
 This will configure existing loggers but will not change future loggers.
 
 ## Logger Configuration
-### [via File](https://github.com/zuhd-org/easyloggingpp#using-configuration-file)
+### [via File](https://github.com/amrayn/easyloggingpp#using-configuration-file)
 ```js
 const logger = easyloggingpp.getLogger('logger1');
 logger.configure({
@@ -197,7 +197,7 @@ logger.configure({
 
 This will configure existing loggers but will not change future loggers.
 
-## Add/Remove [Logging Flag](https://github.com/zuhd-org/easyloggingpp#logging-flags)
+## Add/Remove [Logging Flag](https://github.com/amrayn/easyloggingpp#logging-flags)
 ```js
 easyloggingpp.addFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
 easyloggingpp.removeFlag(easyloggingpp.LoggingFlag.ColoredTerminalOutput);
@@ -228,15 +228,15 @@ Some notes for those who have previous experience with Easylogging++ (and for th
 * Logs are written to `/dev/null` by default. You must configure via `easyloggingpp.configureAllLoggers` at initialization.
 * Loggers are created automatically when you use `easyloggingpp.getLogger`.
 * `ColoredTerminalOutput` flag is set by default. You can unset it using `easyloggingpp.removeFlag`
-* You can safely log with `Fatal` level as `DisableApplicationAbortOnFatalLog` flag is set by default. You should not remove this flag. [Read more](https://github.com/zuhd-org/easyloggingpp#logging-flags)
+* You can safely log with `Fatal` level as `DisableApplicationAbortOnFatalLog` flag is set by default. You should not remove this flag. [Read more](https://github.com/amrayn/easyloggingpp#logging-flags)
 
 ## License
 ```
-Copyright 2017-present Zuhd Web Services
+Copyright 2017-present Amrayn Web Services
 Copyright 2017-present @abumusamq
 
-https://github.com/zuhd-org
-https://zuhd.org
+https://github.com/amrayn
+https://amrayn.com
 https://muflihun.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -252,4 +252,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-  [sample-output]: https://github.com/zuhd-org/easyloggingpp-node/raw/master/rc/output.png
+  [sample-output]: https://github.com/amrayn/easyloggingpp-node/raw/master/rc/output.png
